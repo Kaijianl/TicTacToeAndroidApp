@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.sql.Array;
 import java.util.Arrays;
@@ -44,13 +46,34 @@ public class MainActivity extends AppCompatActivity {
                         gameStates[winner[0]] == (gameStates[winner[2]]) &&
                         gameStates[winner[0]] != 2){
 
-                    System.out.println("game end");
+                    String player = "red";
+                    if (gameStates[winner[0]] == 1){
+                        player = "yellow";
+                    }
+                    TextView whoWins = (TextView)findViewById(R.id.winnerMessage);
+                    whoWins.setText(player + " wins !!!");
+
                     LinearLayout layout = (LinearLayout) findViewById(R.id.playAgain);
                     layout.setAlpha(1f);
 
                 }
             }
         }
+    }
+
+    public void restartfunc (View view){
+        LinearLayout layout = (LinearLayout) findViewById(R.id.playAgain);
+        layout.setAlpha(0f);
+        activePlayer = 0;
+        for (int i = 0; i < gameStates.length; i++){
+            gameStates[i] = 2;
+        }
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout2);
+
+        for (int i = 0; i < gridLayout.getChildCount(); i++){
+            ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
+        }
+
     }
 
     @Override
