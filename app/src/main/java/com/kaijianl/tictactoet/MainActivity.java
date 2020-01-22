@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -68,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < gameStates.length; i++){
             gameStates[i] = 2;
         }
-        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout2);
+
+        androidx.gridlayout.widget.GridLayout gridLayout = findViewById(R.id.gridLayout2);
 
         for (int i = 0; i < gridLayout.getChildCount(); i++){
             ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
